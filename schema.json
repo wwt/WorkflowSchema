@@ -1,0 +1,205 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "examples": [
+        {
+            "schemaVersion": "v0.0.1",
+            "sequence": [
+                {
+                    "flowRepresentableName": "FR1"
+                },
+                {
+                    "flowRepresentableName": "FR2",
+                    "launchStyle": "modal",
+                    "flowPersistence": "removedAfterProceeding"
+                },
+                {
+                    "flowRepresentableName": {
+                        "watchOS": "FR3",
+                        "macOS": "FR3",
+                        "iOS": "FR3",
+                        "iPadOS": "FR3",
+                        "tvOS": "FR3",
+                        "android": "FRA3"
+                    },
+                    "launchStyle": {
+                        "watchOS": "modal",
+                        "macOS": "modal",
+                        "iOS": "modal",
+                        "iPadOS": "popover",
+                        "tvOS": "modal",
+                        "android": "widget"
+                    },
+                    "flowPersistence": {
+                        "watchOS": "removedAfterProceeding",
+                        "macOS": "removedAfterProceeding",
+                        "iOS": "removedAfterProceeding",
+                        "iPadOS": "removedAfterProceeding",
+                        "tvOS": "removedAfterProceeding",
+                        "android": "somethingElse"
+                    }
+                },
+                {
+                    "flowRepresentableName": {
+                        "*": "FR3",
+                        "android": "FRA3"
+                    },
+                    "launchStyle": {
+                        "*": "modal",
+                        "iPadOS": "popover",
+                        "android": "widget"
+                    },
+                    "flowPersistence": {
+                        "watchOS": "removedAfterProceeding",
+                        "macOS": "removedAfterProceeding",
+                        "iOS": "removedAfterProceeding",
+                        "iPadOS": "removedAfterProceeding",
+                        "tvOS": "removedAfterProceeding",
+                        "android": "somethingElse"
+                    }
+                }
+            ]
+        }
+    ],
+    "required": [
+        "schemaVersion",
+        "sequence"
+    ],
+    "properties": {
+        "schemaVersion": {
+            "$id": "#/properties/schemaVersion",
+            "default": "",
+            "description": "If the currently used version of the library does not recognize this schema number, validation will fail.",
+            "examples": [
+                "v0.0.1"
+            ],
+            "readOnly": true,
+            "title": "The version of the SwiftCurrent schema",
+            "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "type": "string"
+        },
+        "sequence": {
+            "$id": "#/properties/sequence",
+            "default": [],
+            "description": "The order of the sequence dictates the order of items in the workflow. Items must match the names/launchStyles/flowPersistences of FlowRepresentables in the codebase or validation will fail.",
+            "examples": [
+                [
+                    {
+                        "flowRepresentableName": "FR1"
+                    },
+                    {
+                        "flowRepresentableName": "FR2",
+                        "launchStyle": "modal",
+                        "flowPersistence": "removedAfterProceeding"
+                    }
+                ]
+            ],
+            "title": "The sequence of FlowRepresentables the workflow should contain",
+            "minItems": 1,
+            "type": "array",
+            "additionalItems": true,
+            "items": {
+                "$id": "#/properties/sequence/items",
+                "anyOf": [
+                    {
+                        "$id": "#/properties/sequence/items/anyOf/1",
+                        "type": "object",
+                        "title": "The second anyOf schema",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": {},
+                        "examples": [
+                            {
+                                "flowRepresentableName": "FR2",
+                                "launchStyle": "modal",
+                                "flowPersistence": "removedAfterProceeding"
+                            }
+                        ],
+                        "required": [
+                            "flowRepresentableName"
+                        ],
+                        "properties": {
+                            "flowRepresentableName": {
+                                "$id": "#/properties/sequence/items/anyOf/1/properties/flowRepresentableName",
+                                "default": "",
+                                "description": "The library will default to the name of the type, but will allow a custom name for deserialization. Can be a string or object describing the name per platform. Key of `*` means match all platforms.",
+                                "examples": [
+                                    "FR2",
+                                    {
+                                        "iOS": "FR2",
+                                        "android": "FRA2"
+                                    },
+                                    {
+                                        "*": "FR2",
+                                        "android": "FRA2"
+                                    }
+                                ],
+                                "title": "The name of the FlowRepresentable in the workflow.",
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "launchStyle": {
+                                "$id": "#/properties/sequence/items/anyOf/1/properties/launchStyle",
+                                "default": "",
+                                "description": "Must be a member of the LaunchStyle type, will fail validation if this interface is not met. Can be a string or object describing the name per platform. Key of `*` means match all platforms.",
+                                "examples": [
+                                    "modal",
+                                    {
+                                        "watchOS": "modal",
+                                        "macOS": "modal",
+                                        "iOS": "modal",
+                                        "iPadOS": "popover",
+                                        "tvOS": "modal",
+                                        "android": "widget"
+                                    },
+                                    {
+                                        "*": "modal",
+                                        "iPadOS": "popover",
+                                        "android": "widget"
+                                    }
+                                ],
+                                "title": "The name of the LaunchStyle in the workflow",
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            },
+                            "flowPersistence": {
+                                "$id": "#/properties/sequence/items/anyOf/1/properties/flowPersistence",
+                                "default": "",
+                                "description": "Must be a member of the FlowPersistence type, will fail validation if this interface is not met. Can be a string or object describing the name per platform. Key of `*` means match all platforms.",
+                                "examples": [
+                                    "removedAfterProceeding",
+                                    {
+                                        "watchOS": "removedAfterProceeding",
+                                        "macOS": "removedAfterProceeding",
+                                        "iOS": "removedAfterProceeding",
+                                        "iPadOS": "removedAfterProceeding",
+                                        "tvOS": "removedAfterProceeding",
+                                        "android": "somethingElse"
+                                    },
+                                    {
+                                        "*": "removedAfterProceeding",
+                                        "android": "someAndroidFlowPersistenceType"
+                                    }
+                                ],
+                                "title": "The name of the FlowPersistence in the workflow",
+                                "type": [
+                                    "string",
+                                    "object"
+                                ]
+                            }
+                        },
+                        "additionalProperties": true
+                    }
+                ]
+            }
+        }
+    },
+    "additionalProperties": true
+}
