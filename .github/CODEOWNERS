@@ -1,0 +1,6 @@
+/LICENSE @wwt/workflow-license
+/NOTICE @wwt/workflow-license
+
+/.github/ @wwt/workflow-pipeline
+/.editorconfig @wwt/workflow-pipeline
+/schema.json @wwt/workflow-pipeline
