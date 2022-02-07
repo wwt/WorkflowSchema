@@ -1,6 +1,6 @@
 # Welcome
 
-This project provides a schema to validate your data driven workflows for [SwiftCurrent](https://github.com/wwt/SwiftCurrent) and [Jetflow](https://github.com/wwt/jetflow). You can validate your json using a tool like [this online json schema validator](https://www.jsonschemavalidator.net).
+This project provides a schema to validate your data driven workflows for [SwiftCurrent](https://github.com/wwt/SwiftCurrent). You can validate your json using a tool like [this online json schema validator](https://www.jsonschemavalidator.net).
 
 ## Examples
 #### The simplest implementation with a `FlowRepresentable` and its provided name.
