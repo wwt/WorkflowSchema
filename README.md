@@ -3,7 +3,10 @@
 This project provides a schema to validate your data driven workflows for [SwiftCurrent](https://github.com/wwt/SwiftCurrent). You can validate your json using a tool like [this online json schema validator](https://www.jsonschemavalidator.net).
 
 ## Examples
-#### The simplest implementation with a `FlowRepresentable` and its provided name.
+
+<details>
+    <summary><b>The simplest implementation with a `FlowRepresentable` and its provided name.</b></summary>
+
 ```json
 {
   "schemaVersion": "v0.0.1",
@@ -14,8 +17,11 @@ This project provides a schema to validate your data driven workflows for [Swift
   ]
 }
 ```
+</details>
 
-#### A more complex implementation that provides an optional `LaunchStyle` and `FlowPersistence`.
+<details>
+    <summary><b>A more complex implementation that provides an optional `LaunchStyle` and `FlowPersistence`.</b></summary>
+
 ```json
 {
   "schemaVersion": "v0.0.1",
@@ -28,8 +34,11 @@ This project provides a schema to validate your data driven workflows for [Swift
   ]
 }
 ```
+</details>
 
-#### An even more complex implementation that includes platform specifications.
+<details>
+    <summary><b>An even more complex implementation that includes platform specifications.</b></summary>
+
 ```json
 {
   "schemaVersion": "v0.0.1",
@@ -63,8 +72,11 @@ This project provides a schema to validate your data driven workflows for [Swift
   ]
 }
 ```
+</details>
 
-#### An implementation that builds on the platform style, but allows using a wildcard `*` to set a default and provide the ability to override as needed.
+<details>
+    <summary><b>An implementation that builds on the platform style, but allows using a wildcard `*` to set a default and provide the ability to override as needed.</b></summary>
+
 ```json
 {
   "schemaVersion": "v0.0.1",
@@ -87,3 +99,4 @@ This project provides a schema to validate your data driven workflows for [Swift
   ]
 }
 ```
+</details>
