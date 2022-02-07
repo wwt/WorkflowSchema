@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json",
+  "schemaVersion": "v0.0.1",
+  "sequence": [
+    {
+      "flowRepresentableName": "FR1"
+    },
+    {
+      "flowRepresentableName": "FR2",
+      "launchStyle": "modal",
+      "flowPersistence": "removedAfterProceeding"
+    },
+    {
+      "flowRepresentableName": {
+        "watchOS": "FR3",
+        "macOS": "FR3",
+        "iOS": "FR3",
+        "iPadOS": "FR3",
+        "tvOS": "FR3",
+        "android": "FRA3"
+      },
+      "launchStyle": {
+        "watchOS": "modal",
+        "macOS": "modal",
+        "iOS": "modal",
+        "iPadOS": "popover",
+        "tvOS": "modal",
+        "android": "widget"
+      },
+      "flowPersistence": {
+        "watchOS": "removedAfterProceeding",
+        "macOS": "removedAfterProceeding",
+        "iOS": "removedAfterProceeding",
+        "iPadOS": "removedAfterProceeding",
+        "tvOS": "removedAfterProceeding",
+        "android": "somethingElse"
+      }
+    },
+    {
+      "flowRepresentableName": {
+        "*": "FR3",
+        "android": "FRA3"
+      },
+      "launchStyle": {
+        "*": "modal",
+        "iPadOS": "popover",
+        "android": "widget"
+      },
+      "flowPersistence": {
+        "watchOS": "removedAfterProceeding",
+        "macOS": "removedAfterProceeding",
+        "iOS": "removedAfterProceeding",
+        "iPadOS": "removedAfterProceeding",
+        "tvOS": "removedAfterProceeding",
+        "android": "somethingElse"
+      }
+    }
+  ]
+}
