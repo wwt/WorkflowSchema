@@ -2,9 +2,8 @@ name: Version Bump
 
 on:
   workflow_dispatch:
-  workflow_run:
+  push:
     branches: [ set-up-actions ]
-    types: [ completed ]
 
 jobs:
   version_bump:
