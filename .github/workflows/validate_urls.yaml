@@ -10,7 +10,7 @@ on:
     inputs:
       branch:
         description: 'Branch to crawl for broken links in .md files'
-        default: 'main'
+        default: 'set-up-actions'
         required: true
 
 jobs:

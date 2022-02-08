@@ -1,0 +1,38 @@
+name: Version Bump
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    branches: [ set-up-actions ]
+    types: [ completed ]
+
+jobs:
+  version_bump:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'wwt/WorkflowSchema' }}
+    env:
+      working-directory: .github
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.RELEASE_PAT }}
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Changelog
+        id: build_changelog
+        uses: mikepenz/release-changelog-builder-action@v1.7.3
+        with:
+          configuration: ".github/changelog_configuration.json"
+          ignorePreReleases: "false"
+          toTag: ${{ steps.tag_version.outputs.changelog }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          token: ${{ secrets.RELEASE_PAT }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{steps.build_changelog.outputs.changelog}}
