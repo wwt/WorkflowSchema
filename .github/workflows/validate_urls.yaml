@@ -24,7 +24,7 @@ jobs:
       run: echo "GIT_BRANCH=${{ github.event.inputs.branch || env.DEFAULT_BRANCH }}" >> $GITHUB_ENV
     - uses: urlstechie/urlchecker-action@master
       with:
-        git_path: https://github.com/wwt/SwiftCurrent
+        git_path: https://github.com/wwt/WorkflowSchema
         branch: ${{ env.GIT_BRANCH }}
         file_types: .md
     - name: slack-send
