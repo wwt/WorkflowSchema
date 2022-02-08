@@ -8,7 +8,7 @@ on:
 jobs:
   version_bump:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.repository == 'wwt/WorkflowSchema' }}
+    if: ${{ github.repository == 'wwt/WorkflowSchema' }}
     env:
       working-directory: .github
     steps:
