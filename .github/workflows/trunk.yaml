@@ -20,6 +20,8 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          dry_run: true
+          append_to_pre_release_tag: false
       - name: Build Changelog
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@v1.7.3
