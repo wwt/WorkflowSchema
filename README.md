@@ -4,30 +4,45 @@ This project provides a schema to validate your data driven workflows for [Swift
 
 ## Examples
 
-<details>
-    <summary><b>The simplest implementation with a `FlowRepresentable` and its provided name.</b></summary>
+The simplest implementation with a `FlowRepresentable` and its provided name.
+
+### JSON
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json",
   "schemaVersion": "v0.0.1",
   "sequence": [
-    {
-      "flowRepresentableName": "FR1"
-    }
+    { "flowRepresentableName": "FirstView" },
+    { "flowRepresentableName": "SecondView" },
+    { "flowRepresentableName": "ThirdView" }
   ]
 }
 ```
-</details>
+
+### YAML
+
+```yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json
+
+---
+schemaVersion: v0.0.1
+sequence:
+- flowRepresentableName: FistView
+- flowRepresentableName: SecondView
+- flowRepresentableName: ThirdView
+```
 
 <details>
     <summary><b>A more complex implementation that provides an optional `LaunchStyle` and `FlowPersistence`.</b></summary>
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json",
   "schemaVersion": "v0.0.1",
   "sequence": [
     {
-      "flowRepresentableName": "FR2",
+      "flowRepresentableName": "FirstView",
       "launchStyle": "modal",
       "flowPersistence": "removedAfterProceeding"
     }
@@ -41,6 +56,7 @@ This project provides a schema to validate your data driven workflows for [Swift
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json",
   "schemaVersion": "v0.0.1",
   "sequence": [
     {
@@ -79,6 +95,7 @@ This project provides a schema to validate your data driven workflows for [Swift
 
 ```json
 {
+  "$schema": "https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json",
   "schemaVersion": "v0.0.1",
   "sequence": [
     {
