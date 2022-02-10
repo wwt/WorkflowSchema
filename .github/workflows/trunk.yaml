@@ -19,10 +19,10 @@ jobs:
                         -R $OWNER/$REPO view $PR_NUMBER \
                         --json labels \
                         --jq '.labels[]
-                              | select(.name== "minor" or .name == "major")
+                              | select(.name == "minor" or .name == "major")
                               | .name')
           if [[ ! -z $BUMP_LEVEL && ( $BUMP_LEVEL -eq "minor" || $BUMP_LEVEL -eq "major" ) ]]; then
-              echo "you're good"
+              echo "bumping to $BUMP_LEVEL"
           else
               BUMP_LEVEL=patch
           fi
