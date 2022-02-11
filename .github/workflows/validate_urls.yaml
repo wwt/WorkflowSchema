@@ -1,0 +1,37 @@
+name: Validate URLs
+
+on:
+  page_build:
+  schedule:
+  # Runs at 14:00 and 23:00 UTC every day.
+  # Read more here: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule
+    - cron: '00 14,23 * * *'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to crawl for broken links in .md files'
+        default: 'set-up-actions'
+        required: true
+
+jobs:
+  validate_documentation_links_on_branch:
+    name: Validate links on branch
+    runs-on: ubuntu-latest
+    env:
+      DEFAULT_BRANCH: main
+    steps:
+    - name: Configure variables
+      run: echo "GIT_BRANCH=${{ github.event.inputs.branch || env.DEFAULT_BRANCH }}" >> $GITHUB_ENV
+    - uses: urlstechie/urlchecker-action@master
+      with:
+        git_path: https://github.com/wwt/WorkflowSchema
+        branch: ${{ env.GIT_BRANCH }}
+        file_types: .md
+    - name: slack-send
+      if: failure()
+      uses: slackapi/slack-github-action@v1.16.0
+      with:
+        payload: "{\"text\":\":alert: <https://github.com/wwt/WorkflowSchema/actions|URL Checker Failed> :alert: \"}"
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
