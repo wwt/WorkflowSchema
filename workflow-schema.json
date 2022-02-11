@@ -3,7 +3,7 @@
   "$id": "http://example.com/example.json",
   "type": "object",
   "title": "Workflow Schema",
-  "description": "The root schema comprises the entire JSON document.",
+  "description": "This schema defines how a workflow can be driven from data for SwiftCurrent.",
   "default": {},
   "examples": [
     {
