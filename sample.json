@@ -54,6 +54,13 @@
         "tvOS": "removedAfterProceeding",
         "android": "somethingElse"
       }
+    },
+    {
+      "flowRepresentableName": "FR4",
+      "launchStyle": "popover",
+      "flowPersistence": {
+        "*": "removedAfterProceeding"
+      }
     }
   ]
 }
