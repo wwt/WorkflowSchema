@@ -103,7 +103,6 @@
       "title": "The sequence of FlowRepresentables the workflow should contain",
       "minItems": 1,
       "type": "array",
-      "additionalItems": true,
       "items": {
         "$id": "#/properties/sequence/items",
         "anyOf": [
@@ -182,8 +181,7 @@
                 "title": "The name of the FlowPersistence in the workflow",
                 "$ref": "#/properties/sequence/items/definitions/nonEmptyStringOrObject"
               }
-            },
-            "additionalProperties": true
+            }
           }
         ],
         "definitions": {
@@ -195,6 +193,5 @@
         }
       }
     }
-  },
-  "additionalProperties": true
+  }
 }
