@@ -4,6 +4,26 @@ Thank you for your interest in WorkflowSchema!
 [![Issues](https://img.shields.io/github/issues/wwt/WorkflowSchema?color=bright-green)](https://github.com/wwt/WorkflowSchema/issues)
 [![Pull Requests](https://img.shields.io/github/issues-pr/wwt/WorkflowSchema?color=bright-green)](https://github.com/wwt/WorkflowSchema/pulls)
 
+## Updating the schema
+If your contribution meets any of the below guidelines it's required that you add the appropriate label on the pull request.
+Using these labels will run a GitHub action that updates the version accordingly.
+
+#### Important note
+Updating the version of the schema requires that all the libraries using the schema are updated to reflect the new version.
+This includes [SwiftCurrent](https://github.com/wwt/SwiftCurrent).
+
+### No label needed
+- metadata changes. `ex. examples are updated, descriptions are revamped, etc.`
+
+### Patch label
+- additive changes `ex. new fields`
+
+### Minor label
+- break to the existing api. `ex. changing the way that FlowRepresentableName works`
+
+### Major label
+- fundamental shift in design. `ex. [sequence] goes away and we decide on a new way to describe workflows`
+
 ## Submitting issues
 ### Filing bugs
 If you found a bug in WorkflowSchema, thank you!  Please go to [issues](https://github.com/wwt/WorkflowSchema/issues/new/choose) and use the `Bug report` template to file it.  We'll reach out to you as soon as we can.  Some things the template will ask for are:
