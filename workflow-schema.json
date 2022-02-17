@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "$id": "http://example.com/example.json",
+  "$id": "https://raw.githubusercontent.com/wwt/WorkflowSchema/main/workflow-schema.json",
   "type": "object",
   "title": "Workflow Schema",
   "description": "This schema defines how a workflow can be driven from data for SwiftCurrent.",
@@ -61,22 +61,24 @@
             "tvOS": "removedAfterProceeding",
             "android": "somethingElse"
           }
+        },
+        {
+          "flowRepresentableName": "FR4",
+          "launchStyle": "something",
+          "flowPersistence": {
+            "*": "something"
+          }
         }
       ]
     }
   ],
-  "required": [
-    "schemaVersion",
-    "sequence"
-  ],
+  "required": ["schemaVersion", "sequence"],
   "properties": {
     "schemaVersion": {
       "$id": "#/properties/schemaVersion",
       "default": "",
       "description": "If the currently used version of the library does not recognize this schema number, validation will fail.",
-      "examples": [
-        "v0.0.1"
-      ],
+      "examples": ["v0.0.1"],
       "readOnly": true,
       "title": "The version of the SwiftCurrent schema",
       "pattern": "^v[0-9]+\\.[0-9]+\\.[0-9]+$",
@@ -106,9 +108,9 @@
         "$id": "#/properties/sequence/items",
         "anyOf": [
           {
-            "$id": "#/properties/sequence/items/anyOf/1",
+            "$id": "#/properties/sequence/items/anyOf/0",
             "type": "object",
-            "title": "The second anyOf schema",
+            "title": "The first anyOf schema",
             "description": "An explanation about the purpose of this instance.",
             "default": {},
             "examples": [
@@ -118,13 +120,10 @@
                 "flowPersistence": "removedAfterProceeding"
               }
             ],
-            "required": [
-              "flowRepresentableName"
-            ],
+            "required": ["flowRepresentableName"],
             "properties": {
               "flowRepresentableName": {
-                "$id": "#/properties/sequence/items/anyOf/1/properties/flowRepresentableName",
-                "default": "",
+                "$id": "#/properties/sequence/items/anyOf/0/properties/flowRepresentableName",
                 "description": "The library will default to the name of the type, but will allow a custom name for deserialization. Can be a string or object describing the name per platform. Key of `*` means match all platforms.",
                 "examples": [
                   "FR2",
@@ -138,14 +137,10 @@
                   }
                 ],
                 "title": "The name of the FlowRepresentable in the workflow.",
-                "type": [
-                  "string",
-                  "object"
-                ]
+                "$ref": "#/properties/sequence/items/definitions/nonEmptyStringOrObject"
               },
               "launchStyle": {
-                "$id": "#/properties/sequence/items/anyOf/1/properties/launchStyle",
-                "default": "",
+                "$id": "#/properties/sequence/items/anyOf/0/properties/launchStyle",
                 "description": "Must be a member of the LaunchStyle type, will fail validation if this interface is not met. Can be a string or object describing the name per platform. Key of `*` means match all platforms.",
                 "examples": [
                   "modal",
@@ -164,14 +159,10 @@
                   }
                 ],
                 "title": "The name of the LaunchStyle in the workflow",
-                "type": [
-                  "string",
-                  "object"
-                ]
+                "$ref": "#/properties/sequence/items/definitions/nonEmptyStringOrObject"
               },
               "flowPersistence": {
-                "$id": "#/properties/sequence/items/anyOf/1/properties/flowPersistence",
-                "default": "",
+                "$id": "#/properties/sequence/items/anyOf/0/properties/flowPersistence",
                 "description": "Must be a member of the FlowPersistence type, will fail validation if this interface is not met. Can be a string or object describing the name per platform. Key of `*` means match all platforms.",
                 "examples": [
                   "removedAfterProceeding",
@@ -189,15 +180,19 @@
                   }
                 ],
                 "title": "The name of the FlowPersistence in the workflow",
-                "type": [
-                  "string",
-                  "object"
-                ]
+                "$ref": "#/properties/sequence/items/definitions/nonEmptyStringOrObject"
               }
             },
             "additionalProperties": true
           }
-        ]
+        ],
+        "definitions": {
+          "nonEmptyStringOrObject": {
+            "minLength": 1,
+            "minProperties": 1,
+            "type": ["string", "object"]
+          }
+        }
       }
     }
   },
