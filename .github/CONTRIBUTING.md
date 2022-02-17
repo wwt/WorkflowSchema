@@ -6,7 +6,7 @@ Thank you for your interest in WorkflowSchema!
 
 ## Updating the schema
 If your contribution meets any of the below guidelines it's required that you add the appropriate label on the pull request.
-Using these labels will run a GitHub action that revs the version accordingly.
+Using these labels will run a GitHub action that updates the version accordingly.
 
 #### Important note
 Updating the version of the schema requires that all the libraries using the schema are updated to reflect the new version.
