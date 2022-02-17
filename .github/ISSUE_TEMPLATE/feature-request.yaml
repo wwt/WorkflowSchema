@@ -12,7 +12,7 @@ body:
     attributes:
       label: Is your feature request related to a problem?
       description: Please describe.
-      placeholder: I'm always frustrated when...
+      placeholder: It would be really cool if...
   - type: textarea
     id: solution
     attributes:
