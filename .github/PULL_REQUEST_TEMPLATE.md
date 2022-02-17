@@ -10,6 +10,8 @@
 - [ ] Does the CI pipeline pass?
 - [ ] Does the schema version need to be changed?
 - [ ] Did you update the examples in the schema for the feature you're adding?
-- [ ] Did you add the appropriate labels to the PR?
+- [ ] Did you read the [contribution guidelines](https://github.com/wwt/WorkflowSchema/blob/main/.github/CONTRIBUTING.md)?
+
+### If you need to update the version provide your label (patch, minor, major):
 
 <!-- Is this feature _really_ needed? -->

@@ -6,17 +6,27 @@ Thank you for your interest in WorkflowSchema!
 
 ## Updating the schema
 If your contribution meets any of the below guidelines it's required that you add the appropriate label on the pull request.
-Using these labels will run a GitHub action that updates the version accordingly.
 
 #### Important note
 Updating the version of the schema requires that all the libraries using the schema are updated to reflect the new version.
 This includes [SwiftCurrent](https://github.com/wwt/SwiftCurrent).
 
-### No label needed
-- metadata changes. `ex. examples are updated, descriptions are revamped, etc.`
-
-### Patch label
-- additive changes `ex. new fields`
+### When to version
+Using these labels will run a GitHub action that updates the version accordingly.
+- **NO LABEL**: When there are just metadata changes that would not affect any parser in any library
+- **NO LABEL**: When examples are updated
+- **NO LABEL**: When descriptions are revamped
+---
+- **PATCH REQUIRED**: When any field that is parsed changed
+- **PATCH REQUIRED**: When new fields are added
+- **PATCH REQUIRED**: When the validation requirements for a field change (minLength > 0, etc...)
+---
+- **MINOR REQUIRED**: When a field name is changed
+- **MINOR REQUIRED**: When a field type is changed
+- **MINOR REQUIRED**: When a field is made parsable both as a string and as an object
+---
+- **MAJOR REQUIRED**: When we change a fundamental behavior (flowPersistence)
+- **MAJOR REQUIRED**: When sequence is no longer what we use to describe workflows
 
 ### Minor label
 - break to the existing api. `ex. changing the way that FlowRepresentableName works`
