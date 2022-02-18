@@ -1,0 +1,36 @@
+name: Validate Schema
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, edited, synchronize]
+
+jobs:
+  validate_schema_correctness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate schema
+        run: |
+          npx ajv-cli compile \
+                    --spec=draft7 \
+                    --allow-union-types \
+                    -s workflow-schema.json
+  validate_samples_with_schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Validate json with schema
+        run: |
+          npx ajv-cli validate \
+                    --spec=draft7 \
+                    --allow-union-types \
+                    -s workflow-schema.json \
+                    -d sample.json
+      - name: Validate yaml with schema
+        run: |
+          npx ajv-cli validate \
+                    --spec=draft7 \
+                    --allow-union-types \
+                    -s workflow-schema.json \
+                    -d sample.yaml
