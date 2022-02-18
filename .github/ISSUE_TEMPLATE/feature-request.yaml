@@ -10,9 +10,9 @@ body:
   - type: textarea
     id: problem
     attributes:
-      label: Is your feature request related to a problem?
-      description: Please describe.
-      placeholder: It would be really cool if...
+      label: What prompted this feature request?
+      description: Is your feature request related to a problem? Please describe.
+      placeholder: I get frustrated every time <x> happens, it interrupts my workflow
   - type: textarea
     id: solution
     attributes:
